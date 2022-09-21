@@ -12,9 +12,16 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @role('Admin')
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    @endrole
+                    @role('Editor')
+                    <x-jet-nav-link href="{{ route('blog') }}" :active="request()->routeIs('blog')">
+                        {{ __('blog') }}
+                    </x-jet-nav-link>
+                    @endrole
                 </div>
             </div>
 
