@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,11 +18,14 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
+
     Route::get('/dashboard', function () {
         return view('dashboard');
-    })->name('dashboard')->middleware('can:create-users');
-    Route::get('/blog', function () {
-        return view('blog');
-    })->name('blog')->middleware('can:create-blog-posts');
-
+    })->name('dashboard');
+    Route::get('/usuarios', function () {
+        return view('usuarios');
+    })->name('usuarios')->middleware('can:registrar-usuarios');
+    Route::get('/altasybajas', function () {
+        return view('altasybajas');
+    })->name('altasybajas')->middleware('can:registrar-altasybajas');
 });

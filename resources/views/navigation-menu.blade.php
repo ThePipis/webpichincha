@@ -12,16 +12,24 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    @role('Admin')
+
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                    @endrole
-                    @role('Editor')
-                    <x-jet-nav-link href="{{ route('blog') }}" :active="request()->routeIs('blog')">
-                        {{ __('blog') }}
+
+                    @can('registrar-usuarios')
+                    <x-jet-nav-link href="{{ route('usuarios') }}" :active="request()->routeIs('usuarios')">
+                        {{ __('Usuarios') }}
                     </x-jet-nav-link>
-                    @endrole
+                    @endcan
+
+                    @can('registrar-altasybajas')
+                    <x-jet-nav-link href="{{ route('altasybajas') }}" :active="request()->routeIs('altasybajas')">
+                        {{ __('AltasyBajas') }}
+                    </x-jet-nav-link>
+                    @endcan
+
+
                 </div>
             </div>
 

@@ -16,22 +16,45 @@ class RoleAndPermissionSeeder extends Seeder
             'password' => bcrypt('password')
         ]);
 
-        Permission::create(['name' => 'create-users']);
-        Permission::create(['name' => 'create-blog-posts']);
+        $especialista = User::create([
+            'name' => 'especialista',
+            'email' => 'especialista@test.com',
+            'password' => bcrypt('password')
+        ]);
+
+        /*$invitado = User::create([
+            'name' => 'invitado',
+            'email' => 'invitado@test.com',
+            'password' => bcrypt('password')
+        ]);*/
+
+        Permission::create(['name' => 'registrar-usuarios']);
+        Permission::create(['name' => 'registrar-altasybajas']);
+        Permission::create(['name' => 'view-invitado']);
 
         $adminRole = Role::create(['name' => 'Admin']);
-        $editorRole = Role::create(['name' => 'Editor']);
+        $registradorRole = Role::create(['name' => 'Registrador']);
+        //$invitadoRole = Role::create(['name' => 'Invitado']);
 
         $adminRole->givePermissionTo([
-            'create-users',
+            'registrar-usuarios',
+            'registrar-altasybajas',
+
+
         ]);
 
-        $editorRole->givePermissionTo([
-            'create-blog-posts',
+        $registradorRole->givePermissionTo([
+
+            'registrar-altasybajas',
         ]);
+
+        /* $invitadoRole->givePermissionTo([
+            'view-invitado',
+        ]);*/
 
         $admin = User::first();
         $admin->assignRole('Admin');
-
+        $especialista->assignRole('Registrador');
+        //$invitado->assignRole('Invitado');
     }
 }
