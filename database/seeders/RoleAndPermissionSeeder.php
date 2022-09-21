@@ -13,13 +13,15 @@ class RoleAndPermissionSeeder extends Seeder
         $user = User::create([
             'name' => 'admin',
             'email' => 'admin@test.com',
-            'password' => bcrypt('password')
+            'password' => bcrypt('password'),
+            'email_verified_at'=>date("Y-m-d H:i:s")
         ]);
 
         $especialista = User::create([
             'name' => 'especialista',
             'email' => 'especialista@test.com',
-            'password' => bcrypt('password')
+            'password' => bcrypt('password'),
+            'email_verified_at'=>date("Y-m-d H:i:s")
         ]);
 
         /*$invitado = User::create([
