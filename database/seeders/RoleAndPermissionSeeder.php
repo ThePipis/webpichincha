@@ -10,19 +10,19 @@ class RoleAndPermissionSeeder extends Seeder
 {
     public function run()
     {
-        $user = User::create([
+       $user = User::create([
             'name' => 'admin',
             'email' => 'admin@test.com',
             'password' => bcrypt('password'),
-            'email_verified_at'=>date("Y-m-d H:i:s")
+            'email_verified_at'=>date("d-m-Y H:i:s")
         ]);
 
-        $especialista = User::create([
+    /*     $especialista = User::create([
             'name' => 'especialista',
             'email' => 'especialista@test.com',
             'password' => bcrypt('password'),
             'email_verified_at'=>date("Y-m-d H:i:s")
-        ]);
+        ]); */
 
         /*$invitado = User::create([
             'name' => 'invitado',
@@ -33,30 +33,32 @@ class RoleAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'registrar-usuarios']);
         Permission::create(['name' => 'registrar-altasybajas']);
         Permission::create(['name' => 'view-invitado']);
+        Permission::create(['name' => 'delete-altasybajas']);
 
         $adminRole = Role::create(['name' => 'Admin']);
         $registradorRole = Role::create(['name' => 'Registrador']);
-        //$invitadoRole = Role::create(['name' => 'Invitado']);
+        $invitadoRole = Role::create(['name' => 'Invitado']);
+
 
         $adminRole->givePermissionTo([
             'registrar-usuarios',
             'registrar-altasybajas',
-
+            'delete-altasybajas',
 
         ]);
 
         $registradorRole->givePermissionTo([
-
             'registrar-altasybajas',
         ]);
-
-        /* $invitadoRole->givePermissionTo([
+        $invitadoRole->givePermissionTo([
             'view-invitado',
-        ]);*/
+        ]);
 
-        $admin = User::first();
-        $admin->assignRole('Admin');
-        $especialista->assignRole('Registrador');
-        //$invitado->assignRole('Invitado');
+
+
+            $admin = User::first();
+            $admin->assignRole('Admin');
+         /*    $especialista->assignRole('Registrador');  */
+
     }
 }

@@ -18,17 +18,21 @@
                     </x-jet-nav-link>
 
                     @can('registrar-usuarios')
-                    <x-jet-nav-link href="{{ route('usuarios') }}" :active="request()->routeIs('usuarios')">
+                    <x-jet-nav-link href="{{ route('usuarios.index') }}" :active="request()->routeIs('usuarios.*')">
                         {{ __('Usuarios') }}
                     </x-jet-nav-link>
                     @endcan
 
                     @can('registrar-altasybajas')
-                    <x-jet-nav-link href="{{ route('altasybajas') }}" :active="request()->routeIs('altasybajas')">
-                        {{ __('AltasyBajas') }}
+                    <x-jet-nav-link href="{{ route('altasybajas.index') }}" :active="request()->routeIs('altasybajas.*')">
+                        {{ __('Altas y Bajas') }}
                     </x-jet-nav-link>
                     @endcan
 
+
+                    <x-jet-nav-link href="{{ route('inventarios.index') }}" :active="request()->routeIs('inventarios.*')">
+                        {{ __('Inventario Windows') }}
+                    </x-jet-nav-link>
 
                 </div>
             </div>
